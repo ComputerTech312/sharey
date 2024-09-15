@@ -3,20 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pastebin - View Paste</title>
+    <title>Sharey</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>View Paste</h1>
+        <h1>Sharey~</h1>
 
-        <!-- Display the paste content inside a <pre> tag for formatting -->
-        <pre>{{ content }}</pre>
+        <!-- Toggle button to switch between modes -->
+        <div class="toggle-container">
+            <button id="fileMode" class="toggle-button active">File Sharing</button>
+            <button id="pasteMode" class="toggle-button">Pastebin</button>
+        </div>
 
-        <div class="button-container">
-            <!-- "View Raw" link now includes the UUID -->
-            <a href="{{ url_for('view_paste_raw', paste_id=paste_id) }}" class="button">View Raw</a>
+        <!-- File Sharing Area -->
+        <div id="fileSharingSection" class="section">
+            <div id="drop-area" class="drop-area">
+                <p>Drag & Drop Files Here or Click to Select</p>
+                <input type="file" id="fileInput" multiple style="display: none;">
+            </div>
+
+            <div id="progressContainer" class="progress-bar" style="display: none;">
+                <div id="progressBar" class="progress"></div>
+            </div>
+            <p id="progressText">0%</p>
+
+            <div id="result" class="result-message"></div>
+
+            <!-- File preview container -->
+            <div id="filePreviewContainer" class="file-preview-container" style="display: none;">
+                <h3>File Previews:</h3>
+                <div id="filePreviews" class="file-previews"></div>
+            </div>
+        </div>
+
+        <!-- Pastebin Area (hidden by default) -->
+        <div id="pastebinSection" class="section" style="display: none;">
+            <textarea id="pasteContent" placeholder="Enter your text here..." rows="10" cols="50"></textarea>
+            <button id="submitPaste" class="submit-button">Submit Paste</button>
+            <div id="pasteResult" class="result-message"></div>
         </div>
     </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
