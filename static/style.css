@@ -1,8 +1,8 @@
-/* General body styling */
+/* General body styling (light theme as default) */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
+    background-color: #f8f9fa; /* Light background */
+    color: #333; /* Dark text */
     text-align: center;
     margin: 0;
     padding: 0;
@@ -11,12 +11,13 @@ body {
 
 /* Main container styling */
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 50px auto;
-    background-color: white;
-    padding: 30px;
+    background-color: white; /* Light background */
+    padding: 60px 50px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-height: 600px; /* Ensure the box is long */
 }
 
 /* Heading styling */
@@ -29,6 +30,9 @@ h1 {
 /* Toggle button container */
 .toggle-container {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    align-items: center;      /* Vertically align the buttons */
 }
 
 /* Toggle button styling */
@@ -53,15 +57,38 @@ h1 {
     color: white;
 }
 
+/* FAQ button styling */
+.faq-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.faq-button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
 /* Drag-and-drop area styling */
 .drop-area {
     border: 2px dashed #ccc;
-    padding: 50px;
+    padding: 90px;
     border-radius: 10px;
     background-color: #fafafa;
     cursor: pointer;
     margin-bottom: 20px;
+    width: 100%;
+    max-width: 1000px;
     transition: background-color 0.2s ease, border-color 0.2s ease;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .drop-area.dragging {
@@ -150,6 +177,7 @@ h1 {
     background-color: #f9f9f9;
     resize: vertical;
     box-sizing: border-box;
+    min-height: 300px; /* Increase the minimum height */
 }
 
 /* Submit button styling */
@@ -174,8 +202,8 @@ pre {
     padding: 20px;
     border-radius: 5px;
     text-align: left;
-    white-space: pre-wrap; /* Allows text wrapping */
-    word-wrap: break-word; /* Break long words */
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 /* Button container and button styling */
@@ -208,6 +236,67 @@ pre {
 
 .raw-link:hover {
     text-decoration: underline;
+}
+
+/* Dark theme styling using prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+
+    .container {
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    }
+
+    .toggle-button, .faq-button {
+        background-color: #333;
+        color: #e0e0e0;
+    }
+
+    .toggle-button.active, .faq-button:hover {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .drop-area {
+        background-color: #333;
+        border-color: #555;
+    }
+
+    .drop-area:hover {
+        background-color: #444;
+        border-color: #666;
+    }
+
+    .progress-bar {
+        background-color: #555;
+    }
+
+    a {
+        color: #4CAF50;
+    }
+
+    a:hover {
+        color: #66bb6a;
+    }
+
+    .submit-button {
+        background-color: #333;
+        color: #e0e0e0;
+    }
+
+    .submit-button:hover {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    pre {
+        background-color: #2e2e2e;
+        color: #e0e0e0;
+    }
 }
 
 /* Media query for mobile responsiveness */

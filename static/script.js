@@ -8,28 +8,56 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const fileModeButton = document.getElementById('fileMode');
     const pasteModeButton = document.getElementById('pasteMode');
+    const faqButton = document.getElementById('faqButton'); // Added FAQ button
+
     const fileSharingSection = document.getElementById('fileSharingSection');
     const pastebinSection = document.getElementById('pastebinSection');
+    const faqSection = document.getElementById('faqSection'); // FAQ section
+
     const pasteContent = document.getElementById('pasteContent');
     const submitPasteButton = document.getElementById('submitPaste');
     const pasteResult = document.getElementById('pasteResult');
     
     let filesToUpload = [];
 
-    // Toggle between file sharing and pastebin mode
+    // Toggle between file sharing, pastebin, and FAQ sections
     fileModeButton.addEventListener('click', () => {
-        fileSharingSection.style.display = 'block';
-        pastebinSection.style.display = 'none';
-        fileModeButton.classList.add('active');
-        pasteModeButton.classList.remove('active');
+        showSection(fileSharingSection);
+        hideSection(pastebinSection);
+        hideSection(faqSection);
+        activateButton(fileModeButton);
     });
 
     pasteModeButton.addEventListener('click', () => {
-        fileSharingSection.style.display = 'none';
-        pastebinSection.style.display = 'block';
-        pasteModeButton.classList.add('active');
-        fileModeButton.classList.remove('active');
+        showSection(pastebinSection);
+        hideSection(fileSharingSection);
+        hideSection(faqSection);
+        activateButton(pasteModeButton);
     });
+
+    faqButton.addEventListener('click', () => {
+        showSection(faqSection);
+        hideSection(fileSharingSection);
+        hideSection(pastebinSection);
+        activateButton(faqButton);
+    });
+
+    // Helper function to show a section
+    function showSection(section) {
+        section.style.display = 'block';
+    }
+
+    // Helper function to hide a section
+    function hideSection(section) {
+        section.style.display = 'none';
+    }
+
+    // Helper function to activate a button
+    function activateButton(button) {
+        const buttons = [fileModeButton, pasteModeButton, faqButton];
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    }
 
     // Make drop area clickable and open file input dialog
     dropArea.addEventListener('click', () => {
